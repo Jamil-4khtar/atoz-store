@@ -36,21 +36,22 @@ function App() {
       <Header />
       <Routes>
         <Route element={<RoutesWithChat />}>
-          <Route path='/home' element={<HomePage />} />
+          <Route path='/' element={<HomePage />} />
           <Route path='product-list' element={<ProductListPage />} />
           <Route path='/product-details' element={<ProductDetailsPage />} />
           <Route path='/product-details/:id' element={<ProductDetailsPage />} />
           <Route path='/cart' element={<CartPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
-
-          <Route element={<ProtectedRoutes admin={false} />}>
-            <Route path='/user' element={<UserProfilePage />} />
-            <Route path='/user/my-orders' element={<UserOrdersPage />} />
-            <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
-            <Route path='/user/order-details' element={<UserOrderDetailsPage />} />
-          </Route>
         </Route>
+
+        <Route element={<ProtectedRoutes admin={false} />}>
+          <Route path='/user' element={<UserProfilePage />} />
+          <Route path='/user/my-orders' element={<UserOrdersPage />} />
+          <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
+          <Route path='/user/order-details' element={<UserOrderDetailsPage />} />
+        </Route>
+
 
 
         <Route element={<ProtectedRoutes admin={true} />}>

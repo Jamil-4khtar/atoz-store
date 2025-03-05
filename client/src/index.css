@@ -1,0 +1,19 @@
+body {
+  max-height: fit-content;
+  position: relative;
+}
+
+#root {
+  min-height: 100vh
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+img.carousel {
+  height: 200px;
+  object-fit: cover;
+}
