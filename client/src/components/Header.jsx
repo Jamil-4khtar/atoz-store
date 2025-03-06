@@ -35,16 +35,15 @@ function Header() {
             </InputGroup>
           </Nav>
           <Nav>
-            <Link className='text-decoration-none' to="/admin/orders">
-              <Nav.Link>
-                Admin
-                <span className="position-absolute top-1 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
-              </Nav.Link>
-            </Link>
+
+            <Nav.Link as={Link} to="/admin/orders">
+              Admin
+              <span className="position-absolute top-1 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+            </Nav.Link>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
             <Nav.Link as={Link} to="/login">Register</Nav.Link>
             <Nav.Link as={Link} to="/cart">
-              <i class="bi bi-cart4"></i> CART
+              <i className="bi bi-cart4"></i> CART
               <Badge pill bg="danger">
                 2
               </Badge>
@@ -53,12 +52,12 @@ function Header() {
               <NavDropdown.Item eventKey="/user/my-orders" as={Link} to="/user/my-orders">My Orders</NavDropdown.Item>
               <NavDropdown.Item eventKey="/user" as={Link} to="/user">My Profile</NavDropdown.Item>
               <NavDropdown.Item>Logout</NavDropdown.Item>
-
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
+
+              {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.4">
                 Separated link
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
 

@@ -1,10 +1,13 @@
+
 body {
   max-height: fit-content;
   position: relative;
 }
 
 #root {
-  min-height: 100vh
+  min-height: 100vh;
+  padding-bottom: 60px;
+  /* border: 1px solid red; */
 }
 
 footer {
@@ -14,6 +17,6 @@ footer {
 }
 
 img.carousel {
-  height: 200px;
+  height: 180px;
   object-fit: cover;
 }
