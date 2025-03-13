@@ -28,7 +28,7 @@ import AdminUsersPage from './pages/admin/AdminUsersPage'
 // components
 import Header from './components/Header'
 import Footer from './components/Footer'
-import RoutesWithChat from './components/RoutesWithChat'
+import RoutesWithChat from './components/user/RoutesWithChat'
 
 function App() {
   return (

@@ -14,8 +14,8 @@ function HomePage() {
     <>
       <ProductCarousel />
 
-      <Container>
-        <Row xs={1} sm={2} md={3} lg={4} className="g-2 p-4">
+      <Container className='p-4 m-0' fluid>
+        <Row xs={1} sm={2} md={3} className="g-2">
           {
             categories.length > 0 && categories.map(c => (
               <Col key={c.id}>

@@ -161,3 +161,56 @@ export const chatData = [
     isRead: false,
   },
 ];
+
+export const productsList = [
+  {
+    "name": "Wireless Bluetooth Earbuds",
+    "price": 59.99,
+    "category": "Electronics"
+  },
+  {
+    "name": "Stainless Steel Water Bottle",
+    "price": 19.99,
+    "category": "Home & Kitchen"
+  },
+  {
+    "name": "Organic Cotton T-Shirt",
+    "price": 29.99,
+    "category": "Clothing"
+  },
+  {
+    "name": "Smart LED Light Bulb",
+    "price": 34.99,
+    "category": "Home Automation"
+  },
+  {
+    "name": "Wireless Charging Pad",
+    "price": 25.99,
+    "category": "Electronics"
+  },
+  {
+    "name": "Yoga Mat",
+    "price": 39.99,
+    "category": "Fitness"
+  },
+  {
+    "name": "Electric Kettle",
+    "price": 49.99,
+    "category": "Home & Kitchen"
+  },
+  {
+    "name": "Running Shoes",
+    "price": 89.99,
+    "category": "Footwear"
+  },
+  {
+    "name": "Backpack",
+    "price": 45.99,
+    "category": "Accessories"
+  },
+  {
+    "name": "Noise-Cancelling Headphones",
+    "price": 199.99,
+    "category": "Electronics"
+  }
+]

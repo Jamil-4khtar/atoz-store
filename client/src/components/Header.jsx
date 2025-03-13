@@ -41,7 +41,7 @@ function Header() {
               <span className="position-absolute top-1 start-10 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
             </Nav.Link>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/login">Register</Nav.Link>
+            <Nav.Link as={Link} to="/register">Register</Nav.Link>
             <Nav.Link as={Link} to="/cart">
               <i className="bi bi-cart4"></i> CART
               <Badge pill bg="danger">
@@ -52,7 +52,7 @@ function Header() {
               <NavDropdown.Item eventKey="/user/my-orders" as={Link} to="/user/my-orders">My Orders</NavDropdown.Item>
               <NavDropdown.Item eventKey="/user" as={Link} to="/user">My Profile</NavDropdown.Item>
               <NavDropdown.Item>Logout</NavDropdown.Item>
-              <NavDropdown.Divider />
+              {/* <NavDropdown.Divider /> */}
 
               {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.4">

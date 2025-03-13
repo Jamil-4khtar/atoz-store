@@ -1,7 +1,8 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom';
 import LoginPage from '../pages/LoginPage';
-import UserChat from './UserChat';
+import UserChat from './user/UserChat';
+
 
 function ProtectedRoutes({ admin }) {
   let isLogin = false;
