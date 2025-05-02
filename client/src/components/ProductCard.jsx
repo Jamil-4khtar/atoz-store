@@ -3,26 +3,25 @@ import { Card, Button, Row, Col, Image } from 'react-bootstrap'
 import { Rating } from 'react-simple-star-rating'
 import {Link} from 'react-router-dom'
 
-function ProductCard() {
+function ProductCard({ product }) {
   return (
     <Card style={{ marginTop: "30px", marginBottom: "50px" }}>
       <Row>
         <Col lg={5}>
-          <Image fluid  style={{ minHeight: "250px", aspectRatio: "3 / 2", objectFit: "cover" }} src="/images/product.png"  thumbnail/>
+          <Image fluid crossOrigin='anonymous'  style={{ minHeight: "250px", aspectRatio: "3 / 2", objectFit: "cover" }} src={"/images/product.png" || product.images[0]}  thumbnail/>
         </Col>
         <Col lg={7}>
           <Card.Body >
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{product.name}</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {product.description}
             </Card.Text>
             <Card.Text className='d-flex flex-row align-items-center'>
-              <Rating readonly size={20} initialValue={5} /><span>(10)</span>
+              <Rating readonly size={20} initialValue={parseInt(product.rating)} /><span>({product.reviewsNumber})</span>
             </Card.Text>
             <Card.Text className='h4'>
-              $2700 {" "}
-              <Link to="/product-details">
+              ${product.price} {" "}
+              <Link to={`/product-details/${product._id}`}>
                 <Button variant="danger">See Product</Button>
               </Link>
             </Card.Text>

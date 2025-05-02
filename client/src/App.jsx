@@ -30,43 +30,60 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import RoutesWithChat from './components/user/RoutesWithChat'
 
+// import PayPalTestComp from './components/PayPalTest'
+
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
+      {/* <Route path="/test-paypal" element={<PayPalTestComp/>} /> */}
+
         <Route element={<RoutesWithChat />}>
           <Route path='/' element={<HomePage />} />
           <Route path='product-list' element={<ProductListPage />} />
-          <Route path='/product-details' element={<ProductDetailsPage />} />
+          <Route path='product-list/:pageNo' element={<ProductListPage />} />
+          <Route path='product-list/category/:categoryName' element={<ProductListPage />} />
+          <Route path='product-list/category/:categoryName/:pageNo' element={<ProductListPage />} />
+          <Route path='product-list/search/:searchQuery' element={<ProductListPage />} />
+          <Route path='product-list/search/:searchQuery/:pageNo' element={<ProductListPage />} />
+          <Route path='product-list/category/:categoryName/search/:searchQuery' element={<ProductListPage />} />
+          <Route path='product-list/category/:categoryName/search/:searchQuery/:pageNo' element={<ProductListPage />} />
+
+          <Route path='product-list/category/:categoryName' element={<ProductListPage />} />
+          {/* <Route path='/product-details' element={<ProductDetailsPage />} /> */}
           <Route path='/product-details/:id' element={<ProductDetailsPage />} />
           <Route path='/cart' element={<CartPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
         </Route>
 
+        {/* Login Required */}
+
         <Route element={<ProtectedRoutes admin={false} />}>
           <Route path='/user' element={<UserProfilePage />} />
           <Route path='/user/my-orders' element={<UserOrdersPage />} />
           <Route path='/user/cart-details' element={<UserCartDetailsPage />} />
           <Route path='/user/order-details' element={<UserOrderDetailsPage />} />
+          <Route path='/user/order-details/:id' element={<UserOrderDetailsPage />} />
         </Route>
 
-
+        {/* ADMIN access requried */}
 
         <Route element={<ProtectedRoutes admin={true} />}>
           <Route path='/admin/user' element={<AdminUsersPage />} />
           <Route path='/admin/products' element={<AdminProductsPage />} />
           <Route path='/admin/orders' element={<AdminOrdersPage />} />
-          <Route path='/admin/order-details' element={<AdminOrderDetailsPage />} />
-          <Route path='/admin/edit-user' element={<AdminEditUserPage />} />
-          <Route path='/admin/edit-product' element={<AdminEditProductPage />} />
+          <Route path='/admin/order-details/:id' element={<AdminOrderDetailsPage />} />
+          <Route path='/admin/edit-user/:id' element={<AdminEditUserPage />} />
+          <Route path='/admin/edit-product/:id' element={<AdminEditProductPage />} />
           <Route path='/admin/create-product' element={<AdminCreateProductPage />} />
           <Route path='/admin/chats' element={<AdminChatsPage />} />
           <Route path='/admin/analytics' element={<AdminAnalytics />} />
         </Route>
-
         <Route path='*' element={<h1>404 page doesn't exists</h1>} />
+        <Route path='/unauthorized' element={<h1>Administrative access required</h1>} />
+
 
 
       </Routes>

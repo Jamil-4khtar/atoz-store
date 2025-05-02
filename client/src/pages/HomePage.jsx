@@ -1,33 +1,31 @@
-import React, { useState } from 'react'
-import ProductCarousel from '../components/ProductCarousel'
-import CategoryCard from '../components/CategoryCard'
-import { shoppingCards } from '../demoData/demo';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
+import React from 'react'
+import HomePageComp from './components/HomePageComp'
+import { useSelector } from 'react-redux';
+import axios from 'axios'
+import MetaComponent from '../components/MetaComponent';
+
+
+const getBestsellers = async () => {
+  const { data } = await axios.get("/api/products/bestsellers")
+  return data
+}
+
 
 function HomePage() {
-  const [categories, setCategories] = useState(shoppingCards);
+  const { categories } = useSelector(state => state.category);
 
 
   return (
     <>
-      <ProductCarousel />
-
-      <Container className='p-4 m-0' fluid>
-        <Row xs={1} sm={2} md={3} className="g-2">
-          {
-            categories.length > 0 && categories.map(c => (
-              <Col key={c.id}>
-                <CategoryCard title={c.name} text={c.description} image={c.image} />
-              </Col>
-            ))
-          }
-        </Row>
-
-      </Container>
-
-
+      <MetaComponent
+        title="Home | A-Z Store"
+        description="Welcome to A-Z Store. Shop the latest products with fast delivery and secure payments."
+        keywords="home, e-commerce, shop, deals"
+      />
+      <HomePageComp
+        categories={categories}
+        getBestsellers={getBestsellers}
+      />
     </>
   )
 }

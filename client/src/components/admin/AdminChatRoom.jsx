@@ -1,82 +1,106 @@
 import { Toast, Button, Form } from "react-bootstrap";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { useDispatch} from 'react-redux'
+import { addAdminMessage, setMessageRecieved } from "../../redux/slices/chatSlice";
 
-const AdminChatRoom = () => {
-  const [toast1, setToast1] = useState(true)
-  const close1 = () => setToast1(false)
+const AdminChatRoom = ({ chatRoom, roomIndex, socketUser, isOpen, toggleOpen, socket }) => {
+  const dispatch = useDispatch();
+  const [localMessages, setLocalMessages] = useState(chatRoom[1] || [])
 
-  const [toast2, setToast2] = useState(true)
-  const close2 = () => setToast2(false)
+  useEffect(() => {
+    console.log(chatRoom[1])
+    setLocalMessages(chatRoom[1] || [])
+    setTimeout(() => {
+      const chatMsg = document.querySelector(`.cht-msg-${socketUser}`);
+      if (chatMsg) chatMsg.scrollTop = chatMsg.scrollHeight;
+    }, 200)
+  }, [chatRoom])
 
+  const close = (socketId) => {
+    toggleOpen(false)
+    socket.emit("admin closes the chat", socketId)
+  }
 
+  const adminSubmitChatMsg = (e, elem) => {
+    e.preventDefault();
+    if (e.keyCode && e.keyCode !== 13) {
+      return
+    }
+    
+    const msg = document.getElementById(elem);
+    let text = msg.value.trim();
+    if (!text) {
+      return
+    }
+
+    socket.emit("admin sends message", {
+      message: text,
+      user: socketUser
+    })
+
+    // setLocalMessages(prev => [...prev, { admin: text }]);
+
+    dispatch(addAdminMessage({ user: socketUser, message: text}))
+    dispatch(setMessageRecieved(false))
+
+    setTimeout(() => {
+      msg.value = "";
+      const chatMsg = document.querySelector(`.cht-msg-${socketUser}`);
+      if (chatMsg) chatMsg.scrollTop = chatMsg.scrollHeight;
+    }, 200);
+  }
+
+  console.log(chatRoom)
+  
   return (
     <>
-      <Toast show={toast1} onClose={close1} className="ms-4 mb-5">
+      <Toast show={isOpen} onClose={() => close(socketUser)} className="ms-4 mb-5">
         <Toast.Header>
-          <strong className="me-auto">Chat with John Doe</strong>
+          <strong className="me-auto">Chat with {socketUser || "User"}</strong>
         </Toast.Header>
         <Toast.Body>
-          <div style={{ maxHeight: "500px", overflow: "auto" }}>
-            {Array.from({ length: 30 }).map((_, idx) => (
+          <div className={`cht-msg-${socketUser}`} style={{ maxHeight: "500px", overflow: "auto" }}>
+            {localMessages.map((text, idx) => (
               <Fragment key={idx}>
-                <p className="bg-primary p-3 ms-4 text-light rounded-pill">
-                  <b>User wrote:</b> Hello, world! This is a chat message.
-                </p>
-                <p>
-                  <b>Admin wrote:</b> Hello, world! This is a chat message.
-                </p>
+                {text.client &&
+                  <p className="bg-primary p-3 ms-4 text-light rounded-pill">
+                    <b>User wrote:</b> {text.client}
+                  </p>
+                }
+                {
+                  text.admin &&
+                  <p>
+                    <b>Admin wrote:</b> {text.admin}
+                  </p>
+                }
               </Fragment>
             ))}
           </div>
 
-            <Form>
+          <Form>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
+              controlId={`adminChatMsg${roomIndex}`}
             >
               <Form.Label>Write a message</Form.Label>
-              <Form.Control as="textarea" rows={2} />
+              <Form.Control
+                onKeyUp={e => adminSubmitChatMsg(e, `adminChatMsg${roomIndex}`)}
+                as="textarea"
+                rows={2}
+              />
             </Form.Group>
-            <Button variant="success" type="submit">
+            <Button
+              onClick={e => adminSubmitChatMsg(e, `adminChatMsg${roomIndex}`)}
+              variant="success"
+              type="submit"
+            >
               Submit
             </Button>
           </Form>
 
         </Toast.Body>
       </Toast>
-      <Toast show={toast2} onClose={close2} className="ms-4 mb-5">
-        <Toast.Header>
-          <strong className="me-auto">Chat with John Doe2</strong>
-        </Toast.Header>
-        <Toast.Body>
-          <div style={{ maxHeight: "500px", overflow: "auto" }}>
-            {Array.from({ length: 30 }).map((_, idx) => (
-              <Fragment key={idx}>
-                <p className="bg-primary p-3 ms-4 text-light rounded-pill">
-                  <b>User wrote:</b> Hello, world! This is a chat message.
-                </p>
-                <p>
-                  <b>Admin wrote:</b> Hello, world! This is a chat message.
-                </p>
-              </Fragment>
-            ))}
-          </div>
 
-            <Form>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Write a message</Form.Label>
-              <Form.Control as="textarea" rows={2} />
-            </Form.Group>
-            <Button variant="success" type="submit">
-              Submit
-            </Button>
-          </Form>
-
-        </Toast.Body>
-      </Toast>
     </>
   );
 };
