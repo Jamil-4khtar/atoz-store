@@ -112,6 +112,16 @@ app.use((error, req, res, next) => {
   }
 })
 
+const path = require('path');
+// ...existing code...
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
+  });
+}
+
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => console.log("Server Is Up")) 
