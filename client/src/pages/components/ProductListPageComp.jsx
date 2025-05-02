@@ -9,7 +9,7 @@ import ProductCard from '../../components/ProductCard';
 import PaginationComponent from '../../components/PaginationComponent';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import MetaComponent from '../../components/MetaComponent';
-import ScrollToTop from '../../utils/scrollToTop';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 
 function ProductListPageComp({ getProducts, categories }) {
@@ -106,10 +106,10 @@ function ProductListPageComp({ getProducts, categories }) {
     window.location.href = "/product-list"
   }
 
-  ScrollToTop()
 
   return (
     <>
+      <ScrollToTop/>
       <MetaComponent
         title={
           `${searchQuery && categoryName ? searchQuery + " || " + categoryName : searchQuery ? searchQuery : categoryName ? categoryName : ""

@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Alert, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import ScrollToTop from '../utils/scrollToTop';
+import ScrollToTop from '../utils/ScrollToTop';
 
 function AddedToCartMessage() {
   const [show, setShow] = useState(true);
   const [timer, setTimer] = useState(5)
   const navigate = useNavigate()
 
-  ScrollToTop()
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      setTimer(timer-1)
+      setTimer(timer - 1)
       // console.log("interval")
     }, 1000);
 
@@ -21,12 +20,13 @@ function AddedToCartMessage() {
       clearInterval(timerId)
     }
   }, [timer])
-  
+
 
   // console.log("rendered")
-  
+
   return (
     <Alert show={show} variant="success" onClose={() => setShow(false)} dismissible>
+      <ScrollToTop/>
       <Alert.Heading>Your Item is added to cart!</Alert.Heading>
       <p>
         <Link to="/cart">

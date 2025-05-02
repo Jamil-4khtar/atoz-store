@@ -3,10 +3,10 @@ import { Row, Col, Container, Image, ListGroup, Form, Button, Alert, ListGroupIt
 import AddedToCartMessage from '../../components/AddedToCartMessage'
 import { Rating } from 'react-simple-star-rating'
 import ImageZoom from 'js-image-zoom'
-import ScrollToTop from '../../utils/scrollToTop';
 import { useParams } from 'react-router-dom';
 import { fetchAndAddToCart } from '../../utils/cartUtils'
 import MetaComponent from '../../components/MetaComponent'
+import ScrollToTop from '../../utils/ScrollToTop'
 
 var options = {
   scale: 2,
@@ -31,8 +31,6 @@ function ProductDetailsComp({ dispatch, getProductDetails, user, writeReviewApi 
       setShowAddToCartMsg(false)
     }, 5000);
   }
-
-  ScrollToTop()
 
   useEffect(() => {
     product.images?.forEach((_, idx) => {
@@ -90,6 +88,7 @@ function ProductDetailsComp({ dispatch, getProductDetails, user, writeReviewApi 
 
   return (
     <>
+      <ScrollToTop/>
       <MetaComponent
         title={`${product.name} | A-Z Store`}
         description={product.description}
