@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, ListGroup, Button } from 'react-bootstrap';
-import ScrollToTop from '../../utils/scrollToTop';
 import PriceFilter from '../../components/filterOptionComponents/PriceFilter';
 import RatingFilter from '../../components/filterOptionComponents/RatingFilter';
 import CategoryFilter from '../../components/filterOptionComponents/CategoryFilter';
@@ -10,6 +9,7 @@ import ProductCard from '../../components/ProductCard';
 import PaginationComponent from '../../components/PaginationComponent';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import MetaComponent from '../../components/MetaComponent';
+import ScrollToTop from '../../utils/scrollToTop';
 
 
 function ProductListPageComp({ getProducts, categories }) {
@@ -106,7 +106,7 @@ function ProductListPageComp({ getProducts, categories }) {
     window.location.href = "/product-list"
   }
 
-  ScrollToTop
+  ScrollToTop()
 
   return (
     <>
