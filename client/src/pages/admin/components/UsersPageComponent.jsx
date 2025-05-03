@@ -39,47 +39,54 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
         <AdminLinks />
       </Col>
       <Col md={10}>
-        <h1>User List</h1>
-        {/* {console.log(users)} */}
-        <Table striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Is Admin</th>
-              <th>Edit/Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map(
-              (user, idx) => (
-                <tr key={idx}>
-                  {/* {console.log(user)} */}
-                  <td>{idx + 1}</td>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.email}</td>
-                  <td>
-                    {user.isAdmin ? <i className="bi bi-check-lg text-success"></i> : <i className="bi bi-x-lg text-danger"></i>}
-                  </td>
-                  <td>
-                    <Button className="btn-sm m-1" as={Link} to={`/admin/edit-user/${user._id}`}>
-                      <i className="bi bi-pencil-square"></i>
-                    </Button>
-                    <Button className="btn-sm" variant="danger" onClick={() => deleteHandler(user._id)} >
-                      <i className="bi bi-x-circle"></i>
-                    </Button>
-                  </td>
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h1 className="mb-0">User List</h1>
+        </div>
+        <div className="card">
+          <div className="card-body p-0">
+            <Table striped hover responsive className="mb-0">
+              <thead>
+                <tr>
+                  <th className="ps-3">#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th className="text-center">Is Admin</th>
+                  <th className="text-center">Actions</th>
                 </tr>
-              )
-            )}
-          </tbody>
-        </Table>
+              </thead>
+              <tbody>
+                {users.map(
+                  (user, idx) => (
+                    <tr key={idx}>
+                      <td className="ps-3">{idx + 1}</td>
+                      <td>{user.firstName}</td>
+                      <td>{user.lastName}</td>
+                      <td>{user.email}</td>
+                      <td className="text-center">
+                        {user.isAdmin ? 
+                          <span className="badge bg-success rounded-pill"><i className="bi bi-check-lg"></i></span> : 
+                          <span className="badge bg-danger rounded-pill"><i className="bi bi-x-lg"></i></span>
+                        }
+                      </td>
+                      <td className="text-center">
+                        <Button className="btn-sm m-1" as={Link} to={`/admin/edit-user/${user._id}`}>
+                          <i className="bi bi-pencil-square"></i>
+                        </Button>
+                        <Button className="btn-sm" variant="danger" onClick={() => deleteHandler(user._id)} >
+                          <i className="bi bi-x-circle"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </Table>
+          </div>
+        </div>
       </Col>
     </Row>
   );
 };
 
-export default UsersPageComponent 
+export default UsersPageComponent
