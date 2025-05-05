@@ -156,12 +156,18 @@ const getProductById = async (req, res, next) => {
 const getBestsellers = async (req, res, next) => {
   try {
     const products = await Product.aggregate([
-      { $sort: { category: 1, sales: -1 } },
+      { $sort: { category: 1, sales: -1 } }, // Ensure sales are sorted descending within categories
       {
-        $group: { _id: "$category", doc_with_max_sales: { $first: "$$ROOT" } },
+        $group: {
+          _id: "$category",
+          _id_: { $first: "$_id" },
+          name: { $first: "$name" },
+          images: { $first: "$images" },
+          category: { $first: "$category" },
+          description: { $first: "$description" },
+        },
       },
-      { $replaceWith: "$doc_with_max_sales" },
-      { $project: { _id: 1, name: 1, images: 1, category: 1, description: 1 } },
+      { $project: { _id: "$_id_", name: 1, images: 1, category: 1, description: 1 } },
       { $limit: 3 },
     ]);
     res.json(products);
@@ -169,6 +175,7 @@ const getBestsellers = async (req, res, next) => {
     next(err);
   }
 };
+
 
 // product controllers for admin
 const adminGetProducts = async (req, res, next) => {
