@@ -29,7 +29,11 @@ app.use(
         "https://www.paypal.com",
         "https://www.paypalobjects.com",
       ],
-      // ...other directives
+      frameSrc: [
+        "'self'",
+        "https://www.paypal.com",
+        "https://www.paypalobjects.com",
+      ],
     },
   })
 );
