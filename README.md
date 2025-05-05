@@ -1,8 +1,10 @@
 # A-Z Store E-commerce Application
 
-**Live Demo**: [https://atoz-store.onrender.com/](https://atoz-store.onrender.com/)
-
 A full-featured e-commerce platform with user and admin functionalities, built with the MERN stack (MongoDB, Express, React, Node.js).
+
+🔗**Live Demo**: [https://atoz-store.onrender.com/](https://atoz-store.onrender.com/)
+
+---
 
 ## 📋 Table of Contents
 
