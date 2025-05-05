@@ -18,6 +18,7 @@ app.use(
     directives: {
       defaultSrc: ["'self'"],
       connectSrc: ["'self'", "https://api.cloudinary.com"],
+      imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],
       // ...other directives
     },
   })
