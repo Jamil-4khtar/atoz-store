@@ -101,7 +101,7 @@ function Header() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className='bg-primary text-white shadow-sm sticky-top'>
+    <Navbar collapseOnSelect expand="lg" className='bg-primary text-white p-2 shadow-sm sticky-top'>
       <Container>
         <Link className='text-decoration-none me-3 me-lg-4' to="/">
           <Navbar.Brand className="text-white fw-bold d-flex align-items-center">
@@ -112,7 +112,7 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 shadow-none" />
         <Navbar.Collapse id="responsive-navbar-nav" className="mt-2 mt-lg-0">
           <Nav className="me-auto mb-2 mb-lg-0">
-            <InputGroup className="rounded overflow-hidden shadow-sm flex-nowrap">
+            <InputGroup className="rounded shadow-sm flex-nowrap">
               <DropdownButton
                 id="dropdown-basic-button"
                 variant="light"
@@ -139,7 +139,7 @@ function Header() {
                 variant="warning"
                 onClick={handleSearchSubmit}
                 className="d-flex align-items-center justify-content-center search-button"
-                style={{width: '46px'}}
+                style={{ width: '46px' }}
                 disabled={isSearching}
                 aria-label="Search"
               >
@@ -151,7 +151,7 @@ function Header() {
               </Button>
             </InputGroup>
           </Nav>
-          <Nav className="align-items-center">
+          <Nav className="align-items-center gap-3">
 
             {user && user.isAdmin &&
               <Nav.Link
@@ -180,7 +180,7 @@ function Header() {
             {user &&
               <NavDropdown
                 title={
-                  <span className="text-white d-flex align-items-center">
+                  <span className="text-white d-inline align-items-center">
                     <i className="bi bi-person-circle me-1"></i>
                     <span className="d-none d-sm-inline">{user?.firstName}</span>
                   </span>
@@ -203,7 +203,7 @@ function Header() {
             }
             <Nav.Link as={Link} to="/cart" className="text-white position-relative nav-link-hover">
               <i className="bi bi-cart4 fs-5"></i>
-              <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+              <Badge pill bg="danger" className="position-absolute top-1 start-100 translate-middle">
                 {totalItems || 0}
               </Badge>
             </Nav.Link>
