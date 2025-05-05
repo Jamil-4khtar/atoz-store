@@ -12,7 +12,16 @@ const app = express()
 const server = http.createServer(app);
 global.io = new Server(server);
 
-app.use(helmet())
+// app.use(helmet())
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'", "https://api.cloudinary.com"],
+      // ...other directives
+    },
+  })
+);
 app.use(express.json())
 app.use(cookieParser())
 app.use(fileUpload())
