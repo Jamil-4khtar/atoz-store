@@ -12,7 +12,7 @@ function ProductCarousel({ bestSellers }) {
           <Carousel.Item key={idx}>
             <img className="d-block w-100 carousel" 
               crossOrigin='anonymous' 
-              src={item.images ? item.images[0].path : null} 
+              src={item.images ? item.images[0]?.path : null} 
               alt={item.name} 
             />
             <Link to={`/product-details/${item._id}`}>
