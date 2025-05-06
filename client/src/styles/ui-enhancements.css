@@ -76,8 +76,10 @@
 }
 
 .table thead th {
-  background-color: var(--light-bg);
-  border-bottom: 2px solid #dee2e6;
+  background-color: var(--secondary-color);
+  opacity: 50%;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   font-weight: 600;
   padding: 1rem 0.75rem;
 }
@@ -135,6 +137,9 @@
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   overflow: hidden;
+  background: transparent;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .chat-header {
@@ -156,7 +161,7 @@
   max-height: 300px;
   overflow: auto;
   padding: 15px;
-  background-color: white;
+  /* background-color: white; */
 }
 
 .chat-msgs p {
@@ -168,13 +173,14 @@
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  background-color: var(--light-bg);
+  /* background-color: var(--light-bg); */
+
 }
 
 .chat-form textarea {
   border-radius: var(--border-radius);
   resize: none;
-  height: 80px;
+  height: 60px;
 }
 
 .chat-form button {
@@ -207,7 +213,7 @@
 
 /* Message Bubbles */
 .client-message {
-  background-color: var(--light-bg);
+  background-color: var(--secondary-color);
   padding: 10px 15px;
   border-radius: var(--border-radius);
   margin-bottom: 10px;

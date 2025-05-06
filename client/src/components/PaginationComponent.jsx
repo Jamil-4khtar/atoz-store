@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function PaginationComponent({ categoryName, pageNum, searchQuery, paginationLinks }) {
 
-  // console.log(categoryName, paginationLinks, pageNum)
+  console.log(categoryName, paginationLinks, pageNum)
 
   const category = categoryName ? `category/${categoryName}/` : "";
   const search = searchQuery ? `search/${searchQuery}/` : "";
@@ -19,7 +19,7 @@ function PaginationComponent({ categoryName, pageNum, searchQuery, paginationLin
         <Pagination.Prev as={Link} disabled={pageNum === 1} to={`${url}${pageNum - 1}`} />
 
       {
-        Array.from({ length: 6 }, (_, i) => i + 1).map(x => (
+        Array.from({ length: paginationLinks }, (_, i) => i + 1).map(x => (
             <Pagination.Item 
               key={x}
               as={Link}

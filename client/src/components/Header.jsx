@@ -101,7 +101,7 @@ function Header() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className='bg-primary text-white p-2 shadow-sm sticky-top'>
+    <Navbar collapseOnSelect expand="lg" className='bg-dark bg-opacity-75 back-blurred text-white p-2 shadow-sm sticky-top'>
       <Container>
         <Link className='text-decoration-none me-3 me-lg-4' to="/">
           <Navbar.Brand className="text-white fw-bold d-flex align-items-center">

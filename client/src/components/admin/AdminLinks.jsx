@@ -18,35 +18,35 @@ function AdminLinks() {
           <Nav.Link 
             as={Link} 
             to={"/admin/orders"} 
-            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/orders' ? 'active bg-light' : ''}`}
+            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/orders' ? 'active bg-secondary' : ''}`}
           >
             <i className="bi bi-box me-2"></i> Orders
           </Nav.Link>
           <Nav.Link 
             as={Link} 
             to={"/admin/products"} 
-            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/products' ? 'active bg-light' : ''}`}
+            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/products' ? 'active bg-secondary' : ''}`}
           >
             <i className="bi bi-grid me-2"></i> Products
           </Nav.Link>
           <Nav.Link 
             as={Link} 
             to={"/admin/user"} 
-            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/user' ? 'active bg-light' : ''}`}
+            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/user' ? 'active bg-secondary' : ''}`}
           >
             <i className="bi bi-people me-2"></i> User List
           </Nav.Link>
           <Nav.Link 
             as={Link} 
             to={"/admin/chats"} 
-            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/chats' ? 'active bg-light' : ''}`}
+            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/chats' ? 'active bg-secondary' : ''}`}
           >
             <i className="bi bi-chat-dots me-2"></i> Chats
           </Nav.Link>
           <Nav.Link 
             as={Link} 
             to={"/admin/analytics"} 
-            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/analytics' ? 'active bg-light' : ''}`}
+            className={`py-3 px-4 border-bottom ${location.pathname === '/admin/analytics' ? 'active bg-secondary' : ''}`}
           >
             <i className="bi bi-bar-chart me-2"></i> Analytics
           </Nav.Link>

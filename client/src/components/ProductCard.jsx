@@ -26,7 +26,7 @@ function ProductCard({ product }) {
         </Col>
         <Col lg={7}>
           <Card.Body className="d-flex flex-column h-100">
-            <Card.Title className="fs-4 mb-3">{product.name}</Card.Title>
+            <Card.Title className="fs-4 mb-3 text-white">{product.name}</Card.Title>
             <Card.Text className="text-secondary mb-3">
               {product.description}
             </Card.Text>

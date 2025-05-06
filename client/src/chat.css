@@ -72,7 +72,7 @@
 }
 
 .chat-msgs {
-  max-height: 300px;
+  max-height: 250px;
   /* overflow-y: scroll; */
   overflow: auto;
   padding: 10px;
