@@ -101,9 +101,9 @@ function Header() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className='bg-dark bg-opacity-75 back-blurred text-white p-2 shadow-sm sticky-top'>
+    <Navbar collapseOnSelect expand="lg" className='bg-dark bg-opacity-75 back-blurred text-white py-2 px-3 shadow sticky-top'>
       <Container>
-        <Link className='text-decoration-none me-3 me-lg-4' to="/">
+        <Link className='text-decoration-none me-3 me-lg-4 nav-brand-link' to="/">
           <Navbar.Brand className="text-white fw-bold d-flex align-items-center">
             <i className="bi bi-shop me-2 fs-4"></i>
             <span className="brand-text">A/Z Store</span>
@@ -112,20 +112,21 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 shadow-none" />
         <Navbar.Collapse id="responsive-navbar-nav" className="mt-2 mt-lg-0">
           <Nav className="me-auto mb-2 mb-lg-0">
-            <InputGroup className="rounded shadow-sm flex-nowrap">
+            <InputGroup className="rounded shadow flex-nowrap" style={{ maxWidth: '600px' }}>
+
               <DropdownButton
                 id="dropdown-basic-button"
                 variant="light"
                 title={searchCat}
                 className="border-0 category-dropdown"
               >
-                <Dropdown.Item onClick={() => setSearchCat("All")}>All</Dropdown.Item>
-                {
-                  categories.map((c, idx) => (
+                  <Dropdown.Item className='fw-bold' onClick={() => setSearchCat("All")}>All</Dropdown.Item>
+                  <Dropdown.Divider className="my-1" />
+                  {categories.map((c, idx) => (
                     <Dropdown.Item key={idx} onClick={() => setSearchCat(c.name)}>{c.name}</Dropdown.Item>
-                  ))
-                }
+                  ))}
               </DropdownButton>
+
               <Form.Control
                 type="text"
                 onKeyUp={submitHandler}
@@ -201,9 +202,9 @@ function Header() {
                 </NavDropdown.Item>
               </NavDropdown>
             }
-            <Nav.Link as={Link} to="/cart" className="text-white position-relative nav-link-hover">
+            <Nav.Link as={Link} to="/cart" className="text-white px-3 position-relative nav-link-hover">
               <i className="bi bi-cart4 fs-5"></i>
-              <Badge pill bg="danger" className="position-absolute top-1 start-100 translate-middle">
+              <Badge pill bg="danger" className="position-absolute top-0 end-0 ">
                 {totalItems || 0}
               </Badge>
             </Nav.Link>

@@ -65,8 +65,8 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
                       <td>{user.email}</td>
                       <td className="text-center">
                         {user.isAdmin ? 
-                          <span className="badge bg-success rounded-pill"><i className="bi bi-check-lg"></i></span> : 
-                          <span className="badge bg-danger rounded-pill"><i className="bi bi-x-lg"></i></span>
+                          <span className="px-3 py-1 bg-success rounded-pill"><i className="bi bi-check-lg"></i></span> : 
+                          <span className="px-3 py-1 bg-danger rounded-pill"><i className="bi bi-x-lg"></i></span>
                         }
                       </td>
                       <td className="text-center">
