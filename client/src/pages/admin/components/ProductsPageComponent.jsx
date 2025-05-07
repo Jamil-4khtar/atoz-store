@@ -71,8 +71,6 @@ const ProductsPageComponent = ({ fetchProducts, deleteUser }) => {
                       <i className="bi bi-x-circle"></i>
                     </Button>
                   </td>
-                  <td>Paypal</td>
-
                 </tr>
               )
             )}

@@ -54,30 +54,32 @@ const AdminChatRoom = ({ chatRoom, roomIndex, socketUser, isOpen, toggleOpen, so
   
   return (
     <>
-      <Toast show={isOpen} onClose={() => close(socketUser)} className="ms-4 mb-5">
-        <Toast.Header>
-          <strong className="me-auto">Chat with {socketUser || "User"}</strong>
+      <Toast show={isOpen} onClose={() => close(socketUser)} className="ms-4 mb-5 toast">
+        <Toast.Header className="toast-header">
+          <strong className="me-auto text-white">Chat with {socketUser || "User"}</strong>
         </Toast.Header>
         <Toast.Body>
           <div className={`cht-msg-${socketUser}`} style={{ maxHeight: "500px", overflow: "auto" }}>
-            {localMessages.map((text, idx) => (
-              <Fragment key={idx}>
-                {text.client &&
-                  <p className="bg-primary p-3 ms-4 text-light rounded-pill">
-                    <b>User wrote:</b> {text.client}
-                  </p>
-                }
-                {
-                  text.admin &&
-                  <p>
-                    <b>Admin wrote:</b> {text.admin}
-                  </p>
-                }
-              </Fragment>
-            ))}
+            <div className="d-flex flex-column">
+              {localMessages.map((text, idx) => (
+                <Fragment key={idx}>
+                  {text.client &&
+                    <div className="admin-message align-self-start">
+                      <b>User:</b> {text.client}
+                    </div>
+                  }
+                  {
+                    text.admin &&
+                    <div className="client-message align-self-end">
+                      <b>Admin:</b> {text.admin}
+                    </div>
+                  }
+                </Fragment>
+              ))}
+            </div>
           </div>
 
-          <Form>
+          <Form className="mt-3">
             <Form.Group
               className="mb-3"
               controlId={`adminChatMsg${roomIndex}`}
@@ -87,15 +89,18 @@ const AdminChatRoom = ({ chatRoom, roomIndex, socketUser, isOpen, toggleOpen, so
                 onKeyUp={e => adminSubmitChatMsg(e, `adminChatMsg${roomIndex}`)}
                 as="textarea"
                 rows={2}
+                className="form-control"
               />
             </Form.Group>
-            <Button
-              onClick={e => adminSubmitChatMsg(e, `adminChatMsg${roomIndex}`)}
-              variant="success"
-              type="submit"
-            >
-              Submit
-            </Button>
+            <div className="d-flex justify-content-end">
+              <Button
+                onClick={e => adminSubmitChatMsg(e, `adminChatMsg${roomIndex}`)}
+                variant="success"
+                type="submit"
+              >
+                Submit
+              </Button>
+            </div>
           </Form>
 
         </Toast.Body>

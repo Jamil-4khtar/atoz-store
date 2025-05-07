@@ -136,7 +136,7 @@ function ProductListPageComp({ getProducts, categories }) {
           </Col>
           <Col md={9}>
             {
-              products.map((item, i) => (
+              products.map((item) => (
                 <React.Fragment key={item._id}>
                   <ProductCard product={item} />
                 </React.Fragment>

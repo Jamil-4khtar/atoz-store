@@ -28,7 +28,7 @@ const OrdersPageComponent = ({ fetchOrders }) => {
         <h1>Orders</h1>
         {/* {console.log(orders)} */}
         <Table striped bordered hover responsive>
-          <thead>
+          <thead >
             <tr>
               <th>#</th>
               <th>User</th>

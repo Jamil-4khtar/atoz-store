@@ -83,37 +83,42 @@ function UserChat() {
         <i className="bi bi-x close"></i>
       </label>
 
-      <div className='chat-wrapper bg-body-tertiary'>
+      <div className='chat-wrapper'>
         <div className='chat-header'>
           <h6>Let's Chat - Online</h6>
         </div>
 
         <div className='chat-msgs'>
-          <p>{chatConnectionInfo}</p>
-          {
-            chat.length > 0 && chat.map((text, id) => (
-              <div key={id}>
-                {text.client &&
-                  <p>
-                    <b>You wrote:</b> {text.client}
-                  </p>
-                }
-                {
-                  text.admin &&
-                  <p className="bg-primary p-3 ms-4 text-light rounded-pill">
-                    <b>Support wrote:</b> {text.admin}
-                  </p>
-                }
-              </div>
-            ))
-          }
+          {chatConnectionInfo && <p className="text-center text-muted">{chatConnectionInfo}</p>}
+          <div className="d-flex flex-column">
+            {
+              chat.length > 0 && chat.map((text, id) => (
+                <div key={id} className="d-flex flex-column">
+                  {text.client &&
+                    <div className="client-message align-self-end">
+                      <b>You:</b> {text.client}
+                    </div>
+                  }
+                  {
+                    text.admin &&
+                    <div className="admin-message align-self-start">
+                      <b>Support:</b> {text.admin}
+                    </div>
+                  }
+                </div>
+              ))
+            }
+          </div>
         </div>
 
         <div className='chat-form'>
-          <textarea id="clientChatMsg" onKeyUp={e => clientSubmitChatMsg(e)} className='form-control' placeholder='Enter your message'>
-
-          </textarea>
-          <button onClick={e => clientSubmitChatMsg(e)} className='btn btn-success btn-block'>Submit</button>
+          <textarea 
+            id="clientChatMsg" 
+            onKeyUp={e => clientSubmitChatMsg(e)} 
+            className='form-control' 
+            placeholder='Enter your message'
+          ></textarea>
+          <button onClick={e => clientSubmitChatMsg(e)} className='btn btn-success'>Submit</button>
         </div>
 
       </div>
