@@ -114,10 +114,13 @@ const CreateProductPageComp = ({ createProductApi, uploadImagesApi, uploadImages
           console.log(res.product)
 
           if (images) {
-            if (process.env.NODE_ENV !== "production") { // todo: change
+            if (import.meta.env.DEV) { // todo: change
               setIsCreating("processing image(s), just a sec...")
               uploadImagesApi(images, res.product._id)
-                .then(res => { /* console.log("testing ran") */ })
+                .then(res => {
+                  setIsCreating(res.message)
+                  console.log(res.message)
+                })
                 .catch(err => {
                   console.log(err.response?.data?.message)
                   setIsCreating(err.response?.data?.message)

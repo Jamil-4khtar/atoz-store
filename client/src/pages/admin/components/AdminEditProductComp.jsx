@@ -121,10 +121,10 @@ const AdminEditProductComp = ({ categories, fetchProduct, id, updateProduct, nav
   // image upload
   const handleImageUpload = (files, productId) => {
     setIsUploading("Image Uploading...")
-    if (process.env.NODE_ENV !== "production") {
+    if (import.meta.env.DEV) {
       uploadHandler(files, productId)
         .then((res) => {
-          setIsUploading("Image upload complete")
+          setIsUploading("Image uploaded successfully")
           setImageUploaded(!imageUploaded)
         })
         .catch(err => setIsUploading(
@@ -337,7 +337,7 @@ const AdminEditProductComp = ({ categories, fetchProduct, id, updateProduct, nav
               </Col>
             </Row>
 
-            <Alert show={newAttrKey && newAttrVal} variant="primary">
+            <Alert show={!!(newAttrKey && newAttrVal)} variant="primary">
               After typing attribute key and value press enterr on one of the
               field
             </Alert>
