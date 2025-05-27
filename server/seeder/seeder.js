@@ -1,3 +1,4 @@
+require("dotenv").config()
 const connectDB = require("../config/db");
 connectDB();
 
@@ -26,24 +27,18 @@ const importData = async () => {
 
     await Review.deleteMany();
     const reviews = await Review.insertMany(reviewData);
-    // const sampleProduct = productData.map(product => {
-    //   reviews.map(r => {
-    //     product.reviews.push(r._id)
-    //   })
-    //   return product
-    // })
+
     const sampleProduct = productData.map((product) => ({
       ...product,
       reviews: reviews.map((r) => r._id),
     }));
-
     await Product.deleteMany();
     await Product.insertMany(sampleProduct);
 
-    // await User.deleteMany();
-    // const hashedData = await getHashedData();
-    // // console.log(hashedData)
-    // await User.insertMany(hashedData);
+    await User.deleteMany();
+    const hashedData = await getHashedData();
+    // console.log(hashedData)
+    await User.insertMany(hashedData);
 
     await Order.deleteMany();
     await Order.insertMany(orderData);

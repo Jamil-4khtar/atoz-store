@@ -275,6 +275,7 @@ const adminUpload = async (req, res, next) => {
       "..",
       "client",
       "public",
+      "images",
       "products"
     );
     // console.log(folderPath)

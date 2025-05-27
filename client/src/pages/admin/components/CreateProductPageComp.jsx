@@ -302,7 +302,7 @@ const CreateProductPageComp = ({ createProductApi, uploadImagesApi, uploadImages
               </Col>
             </Row>
 
-            <Alert show={newAttrKey && newAttrVal} variant="primary">
+            <Alert show={!!(newAttrKey && newAttrVal)} variant="primary">
               After typing attribute key and value press enterr on one of the
               field
             </Alert>

@@ -2,7 +2,7 @@ const categories = [
   {
     name: "Electronics",
     description: "All electronic devices and gadgets.",
-    image: "/images/electronics.png",
+    image: "/images/categories/electronic.jpeg",
     attrs: [
       {
         key: "Brand",
@@ -22,7 +22,7 @@ const categories = [
   {
     name: "Electronics/Computer",
     description: "All kinds of computers.",
-    image: "/images/electronics.png",
+    image: "/images/categories/electronic.jpeg",
     attrs: [
       {
         key: "Brand",
@@ -38,7 +38,7 @@ const categories = [
   {
     name: "Clothing",
     description: "Various types of clothing for men, women, and children.",
-    image: "/images/clothing.png",
+    image: "/images/categories/clothing.jpeg",
     attrs: [
       {
         key: "Size",
@@ -58,7 +58,7 @@ const categories = [
   {
     name: "Books",
     description: "A wide selection of books from various genres.",
-    image: "/images/books.png",
+    image: "/images/categories/books.png",
     attrs: [
       {
         key: "Genre",
@@ -77,7 +77,7 @@ const categories = [
   {
     name: "Home & Kitchen",
     description: "Items for your home and kitchen.",
-    image: "/images/home-kitchen.png",
+    image: "/images/categories/household.jpeg",
     attrs: [
       {
         key: "Material",
@@ -96,7 +96,7 @@ const categories = [
   {
     name: "Sports & Outdoors",
     description: "Equipment and accessories for sports and outdoor activities.",
-    image: "/images/sports.png",
+    image: "/images/categories/sports.png",
     attrs: [
       {
         key: "Type",
