@@ -103,10 +103,10 @@ function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" className='bg-dark bg-opacity-75 back-blurred text-white py-2 px-3 shadow sticky-top'>
       <Container>
-        <Link className='text-decoration-none me-3 me-lg-4 nav-brand-link' to="/">
-          <Navbar.Brand className="text-white fw-bold d-flex align-items-center">
-            <i className="bi bi-shop me-2 fs-4"></i>
-            <span className="brand-text">A/Z Store</span>
+        <Link className='text-decoration-none me-3 me-lg-4' to="/">
+          <Navbar.Brand className="text-white fw-bold d-flex align-items-center p-0">
+            <span><Image className='object-fit-cover p-0 m-0 me-2' style={{ height: "40px" }} src="/images/atoz-tab.png" alt='logo' /></span>
+            <span className="brand-text">A-Z Store</span>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 shadow-none" />
@@ -120,11 +120,11 @@ function Header() {
                 title={searchCat}
                 className="border-0 category-dropdown"
               >
-                  <Dropdown.Item className='fw-bold' onClick={() => setSearchCat("All")}>All</Dropdown.Item>
-                  <Dropdown.Divider className="my-1" />
-                  {categories.map((c, idx) => (
-                    <Dropdown.Item key={idx} onClick={() => setSearchCat(c.name)}>{c.name}</Dropdown.Item>
-                  ))}
+                <Dropdown.Item className='fw-bold' onClick={() => setSearchCat("All")}>All</Dropdown.Item>
+                <Dropdown.Divider className="my-1" />
+                {categories.map((c, idx) => (
+                  <Dropdown.Item key={idx} onClick={() => setSearchCat(c.name)}>{c.name}</Dropdown.Item>
+                ))}
               </DropdownButton>
 
               <Form.Control

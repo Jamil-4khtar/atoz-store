@@ -4,8 +4,8 @@ function MetaComponent({
   title = 'A-Z Store || E-Commerce',
   description = 'Shop the best products online at AccioJob E-Commerce. Fast delivery, secure payments, and great deals every day!',
   keywords = 'e-commerce, online shopping, deals, AccioJob, buy online, shop',
-  image = '/images/seo-banner.png',
-  url = 'https://yourdomain.com/'
+  image = '/images/logo.png',
+  url = 'https://atoz-store.onrender.com/'
 }) {
   return (
     <Helmet>

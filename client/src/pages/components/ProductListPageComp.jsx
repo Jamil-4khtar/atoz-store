@@ -112,7 +112,7 @@ function ProductListPageComp({ getProducts, categories }) {
       <ScrollToTop/>
       <MetaComponent
         title={
-          `${searchQuery && categoryName ? searchQuery + " || " + categoryName : searchQuery ? searchQuery : categoryName ? categoryName : ""
+          `${searchQuery && categoryName ? searchQuery + " || " + categoryName : searchQuery ? searchQuery : categoryName ? categoryName : "products"
           } 
           || A-Z Store`
         }
