@@ -11,7 +11,7 @@ function CategoryCard({ title, text, image }) {
     <Card>
       <Card.Img crossOrigin='anonymous' className='object-fit-cover' style={{ height: "240px"}} variant="top" src={image} />
       <Card.Body style={{ height: "200px"}}>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title className='text-white'>{title}</Card.Title>
         <Card.Text>
           {text}
         </Card.Text>
