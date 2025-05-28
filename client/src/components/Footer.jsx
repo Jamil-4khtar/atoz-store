@@ -6,9 +6,9 @@ import Col from 'react-bootstrap/Col';
 function Footer() {
   return (
     <footer>
-      <Container fluid className="">
+      <Container fluid >
         <Row>
-          <Col className="bg-primary text-white text-center py-3">
+          <Col className="border-1 border-top text-white text-center py-3">
             <div className="d-flex flex-column align-items-center justify-content-center">
               {/* <h5 className="mb-3">A/Z Store</h5> */}
               {/* <p className="mb-1">Your one-stop shop for quality products</p> */}
