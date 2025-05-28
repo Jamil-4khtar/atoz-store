@@ -17,7 +17,7 @@ function ProductCard({ product }) {
               objectFit: "cover",
               borderRadius: "var(--border-radius) 0 0 var(--border-radius)"
             }}
-            src={product.images[0]}
+            src={product.images[0].path}
             className="h-100"
           />
           {product.stock <= 0 && (
