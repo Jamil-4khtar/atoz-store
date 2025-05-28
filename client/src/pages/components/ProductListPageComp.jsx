@@ -121,14 +121,14 @@ function ProductListPageComp({ getProducts, categories }) {
         <Row>
           <Col md={3}>
             <ListGroup variant='flush' >
-              <ListGroup.Item className='mb-3 mt-3'><SortOptions setSortOption={setSortOption} /></ListGroup.Item>
-              <ListGroup.Item><PriceFilter price={price} setPrice={setPrice} /></ListGroup.Item>
-              <ListGroup.Item><RatingFilter setRatingsFromFilter={setRatingsFromFilter} /></ListGroup.Item>
+              <ListGroup.Item className='mb-3 mt-3 bg-transparent'><SortOptions setSortOption={setSortOption} /></ListGroup.Item>
+              <ListGroup.Item className='bg-transparent'><PriceFilter price={price} setPrice={setPrice} /></ListGroup.Item>
+              <ListGroup.Item className='bg-transparent'><RatingFilter setRatingsFromFilter={setRatingsFromFilter} /></ListGroup.Item>
               {!location.pathname.match(/\/category/) &&
-                <ListGroup.Item><CategoryFilter setCategoriesFromFilter={setCategoriesFromFilter} /></ListGroup.Item>
+                <ListGroup.Item className='bg-transparent'><CategoryFilter setCategoriesFromFilter={setCategoriesFromFilter} /></ListGroup.Item>
               }
-              <ListGroup.Item><AttributeFilter attrsFilter={attrsFilter} setAttrsFromFilter={setAttrsFromFilter} /></ListGroup.Item>
-              <ListGroup.Item style={{ display: "flex", gap: "10px", justifyContent: "start" }}>
+              <ListGroup.Item className='bg-transparent'><AttributeFilter attrsFilter={attrsFilter} setAttrsFromFilter={setAttrsFromFilter} /></ListGroup.Item>
+              <ListGroup.Item className='bg-transparent' style={{ display: "flex", gap: "10px", justifyContent: "start" }}>
                 <Button variant="primary" onClick={handleFilter}>Apply</Button>
                 {showReset && <Button variant="danger" onClick={resetFilter}>Reset</Button>}
               </ListGroup.Item>

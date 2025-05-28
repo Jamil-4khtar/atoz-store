@@ -2,6 +2,7 @@
 body {
   max-height: fit-content;
   position: relative;
+  background: radial-gradient(#808080bf, #0d1020)
 }
 
 #root {
