@@ -14,7 +14,7 @@ const AdminChatRoom = ({ chatRoom, roomIndex, socketUser, isOpen, toggleOpen, so
       const chatMsg = document.querySelector(`.cht-msg-${socketUser}`);
       if (chatMsg) chatMsg.scrollTop = chatMsg.scrollHeight;
     }, 200)
-  }, [chatRoom])
+  }, [chatRoom, socketUser])
 
   const close = (socketId) => {
     toggleOpen(false)
@@ -54,12 +54,12 @@ const AdminChatRoom = ({ chatRoom, roomIndex, socketUser, isOpen, toggleOpen, so
   
   return (
     <>
-      <Toast show={isOpen} onClose={() => close(socketUser)} className="ms-4 mb-5 toast">
+      <Toast show={isOpen} onClose={() => close(socketUser)} className="ms-4 p-0 mb-5 toast">
         <Toast.Header className="toast-header">
           <strong className="me-auto text-white">Chat with {socketUser || "User"}</strong>
         </Toast.Header>
         <Toast.Body>
-          <div className={`cht-msg-${socketUser}`} style={{ maxHeight: "500px", overflow: "auto" }}>
+          <div className={`cht-msg-${socketUser}`} style={{ maxHeight: "300px", overflow: "auto" }}>
             <div className="d-flex flex-column">
               {localMessages.map((text, idx) => (
                 <Fragment key={idx}>

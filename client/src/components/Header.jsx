@@ -80,7 +80,7 @@ function Header() {
         }, 500);
       })
 
-      socket.on("disconnected", ({ reason, socketId }) => {
+      socket.on("disconnected", ({ socketId }) => {
         // console.log(socketId, reason)
         dispatch(removeChatRoom(socketId))
       })
@@ -89,7 +89,7 @@ function Header() {
       }
 
     }
-  }, [user?.isAdmin])
+  }, [user?.isAdmin, dispatch, socket])
 
 
   const [isSearching, setIsSearching] = useState(false);
@@ -116,7 +116,7 @@ function Header() {
 
               <DropdownButton
                 id="dropdown-basic-button"
-                variant="light"
+                // variant="light"
                 title={searchCat}
                 className="border-0 category-dropdown"
               >
@@ -161,8 +161,8 @@ function Header() {
                 className="text-white position-relative me-3 nav-link-hover d-flex align-items-center"
               >
                 <i className="bi bi-speedometer2 me-1"></i> Admin
-                {messageRecieved &&
-                  <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle pulse-animation"></span>
+                {!messageRecieved &&
+                  <span className="position-absolute top-15 start-100 translate-middle p-1 mb-3 me-2 bg-danger border border-light rounded-circle pulse-animation"></span>
                 }
               </Nav.Link>
             }
