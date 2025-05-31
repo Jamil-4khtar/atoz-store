@@ -17,7 +17,7 @@ function UserChat() {
       var audio = new Audio("/audio/notif.wav")
       const socket = io()
       setSocket(socket)
-      socket.on("no admin", (msg) => {
+      socket.on("no admin", () => {
         setChat((chat) => ([...chat, { admin: "No admin here"}]))
       })
       socket.on("server sends message from admin to client",  ({ message }) => {

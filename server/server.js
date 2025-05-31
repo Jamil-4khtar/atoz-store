@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 require("dotenv").config();
 var helmet = require("helmet");
+const path = require("path");
+
 
 const app = express();
 const server = http.createServer(app);
@@ -48,6 +50,7 @@ function get_random(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+// SOCKET CONNENCTION
 io.on("connection", (socket) => {
   socket.on("admin connected with server", (adminName) => {
     admins.push({ id: socket.id, admin: adminName });
@@ -84,10 +87,12 @@ io.on("connection", (socket) => {
   socket.on("admin closes the chat", (socketId) => {
     socket.broadcast.to(socketId).emit("admin closed", "");
     let c = io.sockets.sockets.get(socketId);
-    c.disconnect();
+    if(c) c.disconnect(true);
   });
 
   socket.on("disconnect", (reason) => {
+    console.log(`Socket ${socket.id} disconnected due to:`, reason);
+
     const removeIndex = admins.findIndex((item) => item.id === socket.id);
     if (removeIndex !== -1) {
       admins.splice(removeIndex, 1);
@@ -104,6 +109,10 @@ io.on("connection", (socket) => {
   });
 });
 
+io.engine.on("connection_error", (err) => {
+  console.error("Socket.IO connection error:", err.message);
+});
+
 // mongodb connection
 const connectDB = require("./config/db");
 connectDB();
@@ -112,37 +121,21 @@ connectDB();
 const apiRoutes = require("./routes/apiRoutes");
 app.use("/api", apiRoutes);
 
-// global error handler for console
-app.use((error, req, res, next) => {
-  if (process.env.NODE_ENV === "development") {
-    console.error(error);
 
-    res.status(500).json({
-      success: false,
-      message: error.message || "Something went wrong!!",
-    });
-
-    next();
+app.use((err, res, req, next) => {
+  let response = {
+    message: err.message
   }
-});
 
-// global error handler for client
-app.use((error, req, res, next) => {
   if (process.env.NODE_ENV === "development") {
-    res.status(500).json({
-      message: error.message,
-      stack: error.stack,
-    });
-  } else {
-    res.status(500).json({
-      message: error.message,
-    });
+    response.stack = err.stack // including stack only in dev
+    console.error(err) // for teminal log
   }
-});
 
-const path = require("path");
-// ...existing code...
+  res.status(500).json(response)
+})
 
+// Serving frontend from backend during production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..", "client", "dist")));
   app.get("*", (req, res) => {
