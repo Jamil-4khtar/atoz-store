@@ -245,7 +245,7 @@ function Header() {
                 }
                 id="collapsible-nav-dropdown"
                 align="start"
-                className="me-3 nav-dropdown-custom"
+                className="me-0 nav-dropdown-custom"
               >
                 <NavDropdown.Item
                   eventKey="/user/my-orders"

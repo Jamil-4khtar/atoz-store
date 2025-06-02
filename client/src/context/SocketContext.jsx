@@ -7,8 +7,15 @@ export const SocketProvider = ({ children }) => {
   const socketRef = useRef(io()); // <-- Moved out of useEffect
 
   useEffect(() => {
+    const socket = socketRef.current;
+
+    socket.on("reconnect", () => {
+      console.log("socket reconnection causes the page refresh.");
+      window.location.reload();
+    })
     return () => {
-      socketRef.current.disconnect();
+      socket.off("reconenct")
+      socket.disconnect();
     };
   }, []);
 
