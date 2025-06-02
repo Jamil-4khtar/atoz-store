@@ -48,7 +48,7 @@ function ProductDetailsComp({ dispatch, getProductDetails, user, writeReviewApi 
       .catch(err => {
         setError(err.response?.data?.message)
       })
-  }, [id, productReviewed])
+  }, [id, productReviewed, getProductDetails])
 
 
   if (loading) {
@@ -88,7 +88,7 @@ function ProductDetailsComp({ dispatch, getProductDetails, user, writeReviewApi 
 
   return (
     <>
-      <ScrollToTop/>
+      {/* <ScrollToTop/> */}
       <MetaComponent
         title={`${product.name} | A-Z Store`}
         description={product.description}
@@ -103,7 +103,7 @@ function ProductDetailsComp({ dispatch, getProductDetails, user, writeReviewApi 
               product.images.length > 0 && product.images.map((image, idx) => (
                 <div key={idx}>
                   <div id={`image${idx + 1}`}>
-                    <Image crossOrigin='anonymous' fluid src={image.path} />
+                    <Image crossOrigin='anonymous' className='w-100 h-100 ratio-1x1 object-fit-cover' src={image.path} />
                   </div>
                   <br />
                 </div>

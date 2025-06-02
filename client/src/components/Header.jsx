@@ -210,7 +210,7 @@ function Header() {
                 onClick={() => setExpanded(false)}
               >
                 <i className="bi bi-speedometer2 me-1"></i> Admin
-                {!messageRecieved && (
+                {messageRecieved && (
                   <span className="position-absolute top-15 start-100 translate-middle p-1 mb-3 me-2 bg-danger border border-light rounded-circle pulse-animation"></span>
                 )}
               </Nav.Link>

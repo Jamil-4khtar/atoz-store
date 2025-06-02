@@ -151,7 +151,7 @@
     height: 100vh;
     z-index: 1050; /* Bootstrap navbar z-index */
     padding: 2rem;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; 
   }
 }
 
