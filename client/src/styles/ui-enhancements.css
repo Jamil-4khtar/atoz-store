@@ -13,6 +13,17 @@
   --transition: all 0.3s ease;
 }
 
+img.carousel {
+  height: 180px;
+  object-fit: cover;
+}
+
+.outlined-text {
+  font-weight: bold;
+  color: antiquewhite;
+  -webkit-text-stroke: 1px rgb(51, 51, 51);
+}
+
 /* Enhanced Button Styles */
 .btn {
   border-radius: var(--border-radius);
