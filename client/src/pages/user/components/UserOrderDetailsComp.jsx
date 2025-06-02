@@ -145,7 +145,7 @@ const UserOrderDetailsComp = ({
           </Row>
           <br />
           <h2>Order items</h2>
-          <ListGroup variant="flush">
+          <ListGroup>
             {cartItems.map((item, idx) => (
               <ListGroup.Item key={idx}>
                 <CartItems item={item} orderCreated={true} />
