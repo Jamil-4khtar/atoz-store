@@ -6,7 +6,7 @@ function CartItems({ item, orderCreated = false, changeQty = false, removeFromCa
   return (
     <Row>
       <Col md={2}>
-        <Image crossOrigin='anonymous' src={item.images[0]?.path} fluid />
+        <Image crossOrigin='anonymous' src={orderCreated ? item.image.path : item.images[0]?.path} fluid />
       </Col>
       <Col md={2}>
         {item.name}
