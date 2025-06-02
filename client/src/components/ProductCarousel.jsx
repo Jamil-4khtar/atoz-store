@@ -16,7 +16,7 @@ function ProductCarousel({ bestSellers }) {
               alt={item.name} 
             />
             <Link to={`/product-details/${item._id}`}>
-              <Carousel.Caption className='text-start shadow-sm'>
+              <Carousel.Caption className='text-start'>
                 <h3 className='outlined-text text-dark-emphasis'>Bestselling product in {item.category}</h3>
                 <p className='outlined-text text-dark-emphasis'>{item.description}</p>
               </Carousel.Caption>

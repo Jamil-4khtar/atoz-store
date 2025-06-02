@@ -147,6 +147,7 @@
 @media (max-width: 992px) {
   /* App.css */
   .fullscreen-navbar-collapse {
+    position: relative;
     height: 100vh;
     z-index: 1050; /* Bootstrap navbar z-index */
     padding: 2rem;
