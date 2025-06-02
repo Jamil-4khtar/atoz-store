@@ -206,7 +206,7 @@ function Header() {
               <Nav.Link
                 as={Link}
                 to="/admin/orders"
-                className="text-white position-relative me-3 nav-link-hover d-flex align-items-center"
+                className="text-white position-relative me-0 nav-link-hover d-flex align-items-center"
                 onClick={() => setExpanded(false)}
               >
                 <i className="bi bi-speedometer2 me-1"></i> Admin
@@ -245,7 +245,7 @@ function Header() {
                 }
                 id="collapsible-nav-dropdown"
                 align="start"
-                className="me-3 nav-dropdown-custom"
+                className="me-0 nav-dropdown-custom"
               >
                 <NavDropdown.Item
                   eventKey="/user/my-orders"

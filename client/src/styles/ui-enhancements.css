@@ -56,8 +56,9 @@
   box-shadow: var(--box-shadow);
   transition: var(--transition);
   overflow: hidden;
+  background: linear-gradient(to right, #2e2536, #1b202c);
 }
-
+  
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
