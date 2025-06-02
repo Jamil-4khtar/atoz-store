@@ -124,7 +124,7 @@ function UserCartDetailsCom({ totalItems, cartItems, cartSubTotal, dispatch, set
           </Row>
           <br />
           <h2>Order items</h2>
-          <ListGroup variant="flush">
+          <ListGroup >
             {cartItems.map((item, idx) => (
               <ListGroup.Item key={idx}>
                 <CartItems

@@ -19,11 +19,11 @@ function CartPageComp({ totalItems, cartItems, cartSubTotal, dispatch, setQuanti
   }
 
   return (
-    <Container fluid>
+    <Container fluid className='p-2'>
+          <h1 className=''>Shopping Cart</h1>
       <Row>
         <Col>
-          <h1>Shopping Cart</h1>
-          <ListGroup variant='flush'>
+          <ListGroup >
             {
               cartItems.map(item => (
                 <ListGroup.Item key={item._id}>

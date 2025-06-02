@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
@@ -8,53 +8,86 @@ import {
   Alert,
   ListGroup,
   Button,
-  Modal
+  Modal,
 } from "react-bootstrap";
 import CartItems from "../../../components/CartItems";
-import PayPalButton from '../../../components/PayPalButton';
+import PayPalButton from "../../../components/PayPalButton";
 
-
-const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, updateOrder }) => {
-  const [fetchedUserInfo, setFetchedUserInfo] = useState({})
-  const { address, city, country, zipCode, state, phoneNumber } = fetchedUserInfo;
+const UserOrderDetailsComp = ({
+  user,
+  getUser,
+  dispatch,
+  getOrder,
+  orderId,
+  updateOrder,
+}) => {
+  const [fetchedUserInfo, setFetchedUserInfo] = useState({});
+  const { address, city, country, zipCode, state, phoneNumber } =
+    fetchedUserInfo;
 
   const [orderDetails, setOrderDetails] = useState({
-    cartItems: [], orderTotal: {}, paymentMethod: "", user: {}, isPaid: null, isDelivered: null, paidAt: null
+    cartItems: [],
+    orderTotal: {},
+    paymentMethod: "",
+    user: {},
+    isPaid: null,
+    isDelivered: null,
+    paidAt: null,
   });
-  const { cartItems, orderTotal, paymentMethod, isPaid, isDelivered, deliveredAt, paidAt } = orderDetails;
-  console.log("orderDetails", orderDetails)
+  const {
+    cartItems,
+    orderTotal,
+    paymentMethod,
+    isPaid,
+    isDelivered,
+    deliveredAt,
+    paidAt,
+  } = orderDetails;
+  console.log("orderDetails", orderDetails);
 
   const [showPayModal, setShowPayModal] = useState(false);
   const handlePayModalClose = () => setShowPayModal(false);
   const handlePayModalShow = () => setShowPayModal(true);
 
   useEffect(() => {
-    getUser().then(res => {
-      const { address, city, country, zipCode, state, phoneNumber } = res;
-      if (!address || !city || !country || !zipCode || !state || !phoneNumber) {
-        // setButtonDisable(true)
-        // setMissing(" In order to make order, fill out your profile with correct address, city etc.")
-      } else {
-        setFetchedUserInfo({ address, city, country, zipCode, state, phoneNumber })
-      }
-      // console.log(res)
-    }).catch(err => {
-      console.log(err.response?.data?.message)
-    })
-  }, [])
-
+    getUser()
+      .then((res) => {
+        const { address, city, country, zipCode, state, phoneNumber } = res;
+        if (
+          !address ||
+          !city ||
+          !country ||
+          !zipCode ||
+          !state ||
+          !phoneNumber
+        ) {
+          // setButtonDisable(true)
+          // setMissing(" In order to make order, fill out your profile with correct address, city etc.")
+        } else {
+          setFetchedUserInfo({
+            address,
+            city,
+            country,
+            zipCode,
+            state,
+            phoneNumber,
+          });
+        }
+        // console.log(res)
+      })
+      .catch((err) => {
+        console.log(err.response?.data?.message);
+      });
+  }, []);
 
   useEffect(() => {
     // console.log(orderId)
     getOrder(orderId)
-      .then(data => {
-        setOrderDetails(data)
+      .then((data) => {
+        setOrderDetails(data);
       })
-      .catch(err => console.log(
-        err.response?.data?.message
-      ))
-  }, [])
-
+      .catch((err) => console.log(err.response?.data?.message));
+  }, []);
 
   return (
     <Container fluid>
@@ -66,7 +99,15 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
             <Col md={6}>
               <h2>Shipping</h2>
               <b>Name</b>: {user.firstName + " " + user.lastName} <br />
-              <b>Address</b>: {address && city && state && country && zipCode && `${address}, ${city}, ${state}, ${country}, ${zipCode}` || "Must need an address"}<br />
+              <b>Address</b>:{" "}
+              {(address &&
+                city &&
+                state &&
+                country &&
+                zipCode &&
+                `${address}, ${city}, ${state}, ${country}, ${zipCode}`) ||
+                "Must need an address"}
+              <br />
               <b>Phone</b>: {phoneNumber || "Must required Phone number"}
             </Col>
             <Col md={6}>
@@ -80,26 +121,34 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
             </Col>
             <Row>
               <Col>
-                <Alert className="mt-3" variant={isDelivered ? "success" : "danger"}>
-                  {isDelivered ? <>Delivered at {deliveredAt.slice(0, 10)}</> : <>Not delivered </>}
+                <Alert
+                  className="mt-3"
+                  variant={isDelivered ? "success" : "danger"}
+                >
+                  {isDelivered ? (
+                    <>Delivered at {deliveredAt.slice(0, 10)}</>
+                  ) : (
+                    <>Not delivered </>
+                  )}
                 </Alert>
               </Col>
               <Col>
                 <Alert className="mt-3" variant={isPaid ? "success" : "danger"}>
-                  {isPaid ? <>Paid on {paidAt?.slice(0, 10)}</> : <>Not Paid Yet</>}
+                  {isPaid ? (
+                    <>Paid on {paidAt?.slice(0, 10)}</>
+                  ) : (
+                    <>Not Paid Yet</>
+                  )}
                 </Alert>
               </Col>
             </Row>
           </Row>
           <br />
           <h2>Order items</h2>
-          <ListGroup variant="flush">
+          <ListGroup>
             {cartItems.map((item, idx) => (
               <ListGroup.Item key={idx}>
-                <CartItems
-                  item={item}
-                  orderCreated={true}
-                />
+                <CartItems item={item} orderCreated={true} />
               </ListGroup.Item>
             ))}
           </ListGroup>
@@ -110,7 +159,8 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
               <h3>Order summary</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              Items price (after tax): <span className="fw-bold">${orderTotal.cartSubTotal}</span>
+              Items price (after tax):{" "}
+              <span className="fw-bold">${orderTotal.cartSubTotal}</span>
             </ListGroup.Item>
             <ListGroup.Item>
               Shipping: <span className="fw-bold">included</span>
@@ -119,19 +169,35 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
               Tax: <span className="fw-bold">included</span>
             </ListGroup.Item>
             <ListGroup.Item className="text-danger">
-              Total price: <span className="fw-bold">${orderTotal.cartSubTotal}</span>
+              Total price:{" "}
+              <span className="fw-bold">${orderTotal.cartSubTotal}</span>
             </ListGroup.Item>
             <ListGroup.Item>
               <div className="d-grid gap-2">
-                <Button size="lg" variant="info" onClick={handlePayModalShow} type="button" disabled={isPaid || paymentMethod !== "pp"}>
-                  {!isPaid ? <>Pay for your order. (Go Cashless)</> : <>Thank You For Shopping 🎉</>}
+                <Button
+                  size="lg"
+                  variant="info"
+                  onClick={handlePayModalShow}
+                  type="button"
+                  disabled={isPaid || paymentMethod !== "pp"}
+                >
+                  {!isPaid ? (
+                    <>Pay for your order. (Go Cashless)</>
+                  ) : (
+                    <>Thank You For Shopping 🎉</>
+                  )}
                 </Button>
               </div>
             </ListGroup.Item>
 
-            <Modal show={showPayModal} onHide={handlePayModalClose} centered>
+            <Modal
+              data-bs-theme="dark"
+              show={showPayModal}
+              onHide={handlePayModalClose}
+              centered
+            >
               <Modal.Header closeButton>
-                <Modal.Title>Pay with PayPal</Modal.Title>
+                <Modal.Title className="text-body-emphasis">Pay with PayPal</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 {paymentMethod === "pp" && !isPaid && (
@@ -146,7 +212,6 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
                 )}
               </Modal.Body>
             </Modal>
-
           </ListGroup>
         </Col>
       </Row>
@@ -154,5 +219,4 @@ const UserOrderDetailsComp = ({ user, getUser, dispatch, getOrder, orderId, upda
   );
 };
 
-
-export default UserOrderDetailsComp
+export default UserOrderDetailsComp;
