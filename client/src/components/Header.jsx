@@ -207,7 +207,7 @@ function Header() {
               </Button>
             </InputGroup>
           </Nav>
-          <Nav className="align-items-end gap-3">
+          <Nav className="align-items-lg-center align-items-end gap-3">
             {" "}
             {user && user.isAdmin && (
               <Nav.Link
@@ -252,7 +252,7 @@ function Header() {
                 }
                 id="collapsible-nav-dropdown"
                 // align="start"
-                className="me-0 position-relative nav-link-hover nav-dropdown-custom"
+                className="me-0 position-relative nav-dropdown-custom"
                 
               >
                 <NavDropdown.Item

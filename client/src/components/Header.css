@@ -64,6 +64,18 @@
   justify-content: center;
 }
 
+.nav-dropdown-custom {
+  transition: all 0.2s ease-in-out;
+  padding: 1px 3px !important;
+  border-radius: 6px !important;
+
+}
+.nav-dropdown-custom:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .nav-dropdown-custom .dropdown-menu {
   position: absolute;
   background-color: rgba(26, 24, 24, 0.856);
