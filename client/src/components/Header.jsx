@@ -149,31 +149,38 @@ function Header() {
           }`}
         >
           <Nav className="me-auto mb-4 mb-lg-0 flex align-items-end">
-            {" "}
             {/*  to change */}
             <InputGroup
               className="rounded shadow flex-nowrap"
               style={{ maxWidth: "600px" }}
             >
-              <DropdownButton
-                id="dropdown-basic-button"
-                // variant="light"
-                title={searchCat}
-                className="border-0 category-dropdown"
-              >
-                <Dropdown.Item
-                  className="fw-bold"
-                  onClick={() => setSearchCat("All")}
+              <Dropdown className="border-0 category-dropdown position-relative">
+                <Dropdown.Toggle
+                  id="custom-dropdown-toggle"
+                  className="border-0"
+                  variant="light"
                 >
-                  All
-                </Dropdown.Item>
-                <Dropdown.Divider className="my-1" />
-                {categories.map((c, idx) => (
-                  <Dropdown.Item key={idx} onClick={() => setSearchCat(c.name)}>
-                    {c.name}
+                  {searchCat}
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="position-absolute custom-dropdown-menu top-100 start-0">
+                  <Dropdown.Item
+                    className="fw-bold dropdown-item-hover"
+                    onClick={() => setSearchCat("All")}
+                  >
+                    All
                   </Dropdown.Item>
-                ))}
-              </DropdownButton>
+                  <Dropdown.Divider className="my-1" />
+                  {categories.map((c, idx) => (
+                    <Dropdown.Item
+                      className="dropdown-item-hover"
+                      key={idx}
+                      onClick={() => setSearchCat(c.name)}
+                    >
+                      {c.name}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
 
               <Form.Control
                 type="text"
@@ -220,7 +227,7 @@ function Header() {
                 <Nav.Link
                   as={Link}
                   to="/login"
-                  className="text-white me-3 nav-link-hover d-flex align-items-center"
+                  className="text-white nav-link-hover d-flex align-items-center"
                   onClick={() => setExpanded(false)}
                 >
                   <i className="bi bi-box-arrow-in-right me-1"></i> Login
@@ -228,7 +235,7 @@ function Header() {
                 <Nav.Link
                   as={Link}
                   to="/register"
-                  className="text-white me-3 nav-link-hover d-flex align-items-center"
+                  className="text-white nav-link-hover d-flex align-items-center"
                   onClick={() => setExpanded(false)}
                 >
                   <i className="bi bi-person-plus me-1"></i> Register
@@ -238,14 +245,15 @@ function Header() {
             {user && (
               <NavDropdown /* #Fix: Navbar dropdown displacement */
                 title={
-                  <span className="text-white nav-link-hover d-inline align-items-center">
+                  <span className="text-white d-inline align-items-center">
                     <i className="bi bi-person-circle me-1"></i>
                     <span className="d-inline">{user?.firstName}</span>
                   </span>
                 }
                 id="collapsible-nav-dropdown"
-                align="start"
-                className="me-0 nav-dropdown-custom"
+                // align="start"
+                className="me-0 position-relative nav-link-hover nav-dropdown-custom"
+                
               >
                 <NavDropdown.Item
                   eventKey="/user/my-orders"
@@ -280,7 +288,7 @@ function Header() {
             <Nav.Link
               as={Link}
               to="/cart"
-              className="text-white px-3 position-relative nav-link-hover"
+              className="text-white me-1 px-3 position-relative nav-link-hover"
               onClick={() => setExpanded(false)}
             >
               <i className="bi bi-cart4 fs-5"></i>
