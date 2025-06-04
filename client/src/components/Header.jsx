@@ -245,7 +245,7 @@ function Header() {
             {user && (
               <NavDropdown /* #Fix: Navbar dropdown displacement */
                 title={
-                  <span className="text-white d-inline align-items-center">
+                  <span className="text-white d-inline nav-link-hover align-items-center">
                     <i className="bi bi-person-circle me-1"></i>
                     <span className="d-inline">{user?.firstName}</span>
                   </span>
